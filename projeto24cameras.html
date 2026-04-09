@@ -3,38 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Montando Projeto de 24 cameras</title>
-    
-    <meta property="og:title" content="Proposta de Segurança High Performance - Michael da Horus" />
-    <meta property="og:description" content="Confira nossa seleção exclusiva de equipamentos de monitoramento IP e Analógico para Palmas e região." />
-    <meta property="og:image" content="https://intelbras.com.br/static/media/logo-intelbras.png" />
-    <meta property="og:type" content="website" />
-
+    <title>Michael da Horus - Segurança Eletrônica</title>
     <style>
+        /* CONFIGURAÇÕES DE CORES E FONTES */
         :root {
-            /* PALETA HORUS DISTRIBUIDORA */
-            --horus-orange: #FF6600;
-            --horus-orange-dark: #E65C00;
-            --horus-dark: #333333;
-            --horus-gray-light: #f4f4f4;
+            --orange: #FF6600;
+            --dark: #333333;
+            --bg: #f4f4f4;
             --white: #ffffff;
-            /* FONTES NATIVAS DO SISTEMA (100% OFFLINE) */
-            --font-cursive: 'Brush Script MT', 'Lucida Handwriting', cursive;
-            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-            -webkit-print-color-adjust: exact !important;
-            print-color-adjust: exact !important;
         }
 
         body {
-            font-family: var(--font-main);
-            background-color: var(--horus-gray-light);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg);
             margin: 0;
             padding: 0;
-            color: var(--horus-dark);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,102 +25,172 @@
 
         /* CABEÇALHO COMPACTO */
         header {
-            width: 100%;
-            background: linear-gradient(135deg, var(--horus-orange), var(--horus-orange-dark));
+            background: linear-gradient(135deg, var(--orange), #e65c00);
             color: white;
-            padding: 20px;
+            width: 100%;
+            padding: 30px 20px;
             text-align: center;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-family: var(--font-cursive);
-            font-size: 50px;
+            font-family: 'Brush Script MT', cursive;
+            font-size: 55px;
             margin: 0;
             font-weight: 100;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         header p {
-            font-size: 0.9rem;
-            margin: 5px 0 0;
+            font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-top: 5px;
             font-weight: bold;
-            opacity: 0.9;
         }
 
         /* CONTAINER DOS CARDS */
         .container {
             width: 100%;
-            max-width: 500px; /* Largura ideal para WhatsApp/Celular */
+            max-width: 600px; /* Tamanho ideal para celular */
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
         }
 
-        /* ESTILO DO CARD (Vertical) */
+        /* ESTILO DO CARD */
         .card {
-            background-color: var(--white);
+            background: var(--white);
             border-radius: 15px;
+            margin-bottom: 25px;
             overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.07);
-            border: 1px solid #eee;
-            transition: transform 0.2s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 1px solid #ddd;
         }
 
-        .card:hover {
-            transform: translateY(-3px);
-        }
-
-        /* Área da Foto */
-        .card-image-box {
+        .img-container {
             width: 100%;
-            height: 250px;
-            background-color: white;
+            height: 220px;
+            background: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
+            padding: 15px;
         }
 
-        .card-image-box img {
+        .img-container img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
 
-        /* Conteúdo do Card */
         .card-content {
             padding: 20px;
+            border-top: 1px solid #eee;
         }
 
-        .product-code {
+        .tag {
+            color: var(--orange);
             font-size: 11px;
-            color: #999;
             font-weight: bold;
             text-transform: uppercase;
-            margin-bottom: 5px;
-            display: block;
         }
 
-        .product-title {
-            color: var(--horus-orange);
+        .card-title {
             font-size: 20px;
+            color: var(--dark);
+            margin: 5px 0 15px 0;
             font-weight: 800;
-            margin: 0 0 15px 0;
-            line-height: 1.2;
         }
 
-        .product-desc {
-            font-size: 14px;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-
-        /* Lista Técnica */
-        ul.tech-list {
+        ul {
             padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        li {
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            color: #444;
+        }
+
+        li::before {
+            content: "●";
+            color: var(--orange);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* BOTÃO WHATSAPP */
+        .btn-whats {
+            display: block;
+            background-color: #25D366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 0 0 15px 15px;
+        }
+
+        footer {
+            padding: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Michael da Horus</h1>
+        <p>Soluções em Segurança Eletrônica</p>
+    </header>
+
+    <div class="container">
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://backend.intelbras.com.br/sites/default/files/styles/image_product_large/public/2023-01/imagem_vhl_1220_d_g8_frente.png" alt="VHL 1220 D">
+            </div>
+            <div class="card-content">
+                <span class="tag">Monitoramento HDCVI</span>
+                <div class="card-title">Câmera Dome VHL 1220 D G8</div>
+                <ul>
+                    <li>Resolução Full HD 1080p para imagens nítidas.</li>
+                    <li>Invermelho de 20 metros (Visão Noturna).</li>
+                    <li>Proteção contra surtos de tensão.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://backend.intelbras.com.br/sites/default/files/styles/image_product_large/public/2021-08/MHDX_1316_perspectiva-esquerda.png" alt="MHDX 1316">
+            </div>
+            <div class="card-content">
+                <span class="tag">Inteligência de Vídeo</span>
+                <div class="card-title">Gravador MHDX 1316 (16 Canais)</div>
+                <ul>
+                    <li>Suporta até 16 câmeras com tecnologia multi-HD.</li>
+                    <li>Detecção Inteligente de pessoas e veículos.</li>
+                    <li>Acesso remoto via App Intelbras Cloud.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="img-container">
+                <img src="https://backend.intelbras.com.br/sites/default/files/styles/image_product_large/public/2022-07/S1126F-HPA-perspectiva-esquerda-intelbras.png" alt="S1126F-HPA">
+            </div>
+            <div class="card-content">
+                <span class="tag">Infraestrutura PoE</span>
+                <div class="card-title">Switch Hi-PoE S1126F HPA</div>
+                <ul>
+                    <li>24 portas PoE para alimentação direta das câmeras.</li>
+                    <li>Suporte a dispositivos Hi-PoE (alta potência).</li>
+                    <li>Ideal para sistemas IP de grande porte.</li>
+                </ul>
+            </div>
+        </div>
