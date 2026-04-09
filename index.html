@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultoria Michael Oliveira - Engenharia de Segurança</title>
+    <title>Michael Oliveira - Engenharia de Segurança</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { 
@@ -17,7 +17,7 @@
             --poe-color: #e74c3c;
         }
 
-        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; background: var(--gray-bg); margin: 0; scroll-behavior: smooth; padding-bottom: 100px; }
+        body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; color: #333; background: var(--gray-bg); margin: 0; scroll-behavior: smooth; padding-bottom: 120px; }
         
         header { 
             background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1557597774-9d2739f85a76?auto=format&fit=crop&q=80&w=1000') center/cover;
@@ -38,21 +38,32 @@
         .form-group { margin-bottom: 20px; }
         label { display: block; font-weight: bold; margin-bottom: 8px; color: var(--dark); }
         select, input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; box-sizing: border-box; }
+        
         .btn-send-form { background: var(--whatsapp); color: white; border: none; padding: 15px 25px; border-radius: 8px; font-weight: bold; font-size: 1.1em; cursor: pointer; width: 100%; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
         .btn-send-form:hover { background: #1eb956; transform: scale(1.02); }
 
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px; }
-        .quote-link { text-decoration: none; color: inherit; background: #f8f9fa; padding: 15px; border-radius: 8px; border: 1px solid #ddd; transition: 0.3s; display: flex; flex-direction: column; font-size: 0.9em; }
-        .quote-link:hover { border-color: var(--primary); background: #fff; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .quote-link strong { color: var(--primary); margin-bottom: 5px; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin-top: 15px; }
+        .quote-link { text-decoration: none; color: inherit; background: #f8f9fa; padding: 12px; border-radius: 8px; border: 1px solid #ddd; transition: 0.3s; display: flex; flex-direction: column; font-size: 0.85em; }
+        .quote-link:hover { border-color: var(--primary); background: #fff; transform: translateY(-3px); }
+        .quote-link strong { color: var(--primary); font-size: 1em; }
 
-        .float-btn { position: fixed; width: 60px; height: 60px; border-radius: 50px; text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s; }
-        .whatsapp-float { bottom: 40px; right: 40px; background-color: var(--whatsapp); color: #FFF; animation: pulse 2s infinite; }
-        .catalog-float { bottom: 40px; left: 40px; background-color: var(--blue-info); color: #FFF; font-size: 24px; width: auto; padding: 0 20px; }
-        .catalog-float span { font-size: 14px; font-weight: bold; margin-left: 10px; }
+        /* BOTÕES FLUTUANTES FORÇADOS */
+        .float-btn-container { position: fixed; bottom: 30px; left: 0; right: 0; width: 100%; pointer-events: none; z-index: 9999; display: flex; justify-content: space-between; padding: 0 30px; box-sizing: border-box; }
+        
+        .f-btn { pointer-events: auto; display: flex; align-items: center; justify-content: center; text-decoration: none; color: white; font-weight: bold; border-radius: 50px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); transition: 0.3s; height: 60px; }
+        
+        .f-left { background-color: var(--blue-info); padding: 0 20px; font-size: 14px; }
+        .f-right { background-color: var(--whatsapp); width: 60px; font-size: 30px; animation: pulse 2s infinite; }
 
-        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+        @keyframes pulse { 
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); } 
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } 
+        }
+        
         .footer-expert { text-align: center; padding: 50px 20px; background: var(--dark); color: white; border-radius: 12px; }
+        .footer-name { font-size: 2.2em; color: var(--whatsapp); font-weight: bold; margin-bottom: 5px; display: block; }
+        .footer-phone { font-size: 1.8em; color: var(--whatsapp); font-weight: bold; display: block; }
     </style>
 </head>
 <body>
@@ -72,43 +83,25 @@
 
     <section class="card feature-card">
         <h2><i class="fas fa-microchip"></i> Inteligência de Canais (16 + 8)</h2>
-        <p>Usamos as 16 entradas físicas para analógicas e expandimos para mais <strong>08 câmeras IP/Wi-Fi</strong> (iM5, VIPW 1300 SD), totalizando 24 câmeras monitoradas.</p>
+        <p>Usamos as 16 entradas físicas para analógicas e expandimos para mais <strong>08 câmeras IP/Wi-Fi</strong>, totalizando 24 câmeras monitoradas.</p>
     </section>
 
     <section id="orcamento" class="card form-card">
         <h2><i class="fas fa-list-check"></i> Monte sua Pré-Cotação</h2>
-        <p>Personalize seu projeto escolhendo os itens de estoque disponíveis:</p>
-        
         <form id="quoteForm">
             <div class="form-group">
-                <label>Gravador (DVR/NVR) Base:</label>
+                <label>Gravador (DVR/NVR):</label>
                 <select id="gravador">
                     <option value="MHDX 1316">MHDX 1316 (Híbrido 24 canais)</option>
-                    <option value="MHDZ 3116-C">MHDZ 3116 -C (Série 3000)</option>
-                    <option value="INVD 3032">INVD 3032 (NVR Alta Performance)</option>
-                    <option value="MHDZ 1308">MHDZ 1308 (08 Canais)</option>
+                    <option value="MHDZ 3116-C">MHDZ 3116 -C</option>
+                    <option value="MHDZ 1308">MHDZ 1308</option>
+                    <option value="INVD 3032">INVD 3032 (32 canais IP)</option>
                 </select>
             </div>
-
             <div class="form-group">
-                <label>Modelo de Câmera Desejado:</label>
-                <input type="text" id="camera_escolha" placeholder="Ex: 10x VIP 3240 + 6x VHL 1220">
+                <label>Câmeras e Outros Produtos:</label>
+                <textarea id="produtos_lista" rows="3" placeholder="Ex: 10x VIPW 1220, 1x Switch S2328, 5 caixas VBOX..."></textarea>
             </div>
-
-            <div class="form-group">
-                <label>Infraestrutura e Alimentação:</label>
-                <select id="infra">
-                    <option value="Switch PoE 24 Portas">Switch PoE 24 Portas (Centralizado)</option>
-                    <option value="Fontes Blindadas 12V">Fontes Blindadas 12V (Individualizadas)</option>
-                    <option value="Fonte Nobreak Ininterrupta">Fonte Nobreak EFB (Com Bateria)</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label>Observações:</label>
-                <textarea id="obs" rows="2" placeholder="Detalhes adicionais..."></textarea>
-            </div>
-
             <button type="button" onclick="sendToWhatsapp()" class="btn-send-form">
                 <i class="fab fa-whatsapp"></i> ENVIAR SOLICITAÇÃO AO MICHAEL
             </button>
@@ -116,80 +109,79 @@
     </section>
 
     <section id="catalogo" class="card">
-        <h2><i class="fas fa-warehouse"></i> Nosso Estoque de Soluções</h2>
-        <p>Confira os itens prontos para o seu projeto:</p>
+        <h2><i class="fas fa-warehouse"></i> Nosso Estoque</h2>
 
-        <h3><i class="fas fa-camera"></i> Linha de Câmeras (IP, Wi-Fi e Analógicas)</h3>
+        <h3>Câmeras IP e Wi-Fi</h3>
         <div class="product-grid">
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIPW 1220 WIFI</strong><span>Dome 2MP IP Wi-Fi</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIPW 1430 D</strong><span>IP Dome Profissional</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIPW 1230 B/D</strong><span>Vídeo IP Bullet/Dome</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VHL 1120 / 1220</strong><span>Linha HD (Domes e Bullets)</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VHD 1540 B 5MP</strong><span>Ultra HD - IR 30m</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VHD 5240 DUAL COLOR</strong><span>Visão Noturna Colorida + IA</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VHD 3240 DUAL AUDIO</strong><span>Com Áudio e Full Color</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIP 3440 / 1430</strong><span>Câmeras IP Inteligentes</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIP 3240 Z (40M)</strong><span>Lente Varifocal Motorizada</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIP 5225 SD IA G2</strong><span>Speed Dome com IA de Elite</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VIP 5460 Z IA</strong><span>Bullet IP 4MP com IA</span></a>
+            <div class="quote-link"><strong>VIPW 1220</strong><span>IP WIFI DOME 2MP</span></div>
+            <div class="quote-link"><strong>VIPW 1430 D</strong><span>IP DOME 4MP</span></div>
+            <div class="quote-link"><strong>VIPW 1230 B/D</strong><span>IP BULLET/DOME</span></div>
+            <div class="quote-link"><strong>VIP 3440 / 1430</strong><span>IP INTELIGENTE</span></div>
+            <div class="quote-link"><strong>VIP 3240 Z</strong><span>IP MOTORIZADA 40M</span></div>
+            <div class="quote-link"><strong>VIP 5225 SD</strong><span>SPEED DOME IA G2</span></div>
+            <div class="quote-link"><strong>VIP 5460 Z IA</strong><span>BULLET IP 4MP IA</span></div>
         </div>
 
-        <h3><i class="fas fa-video"></i> Gravadores Digitais (MHDZ / INVD)</h3>
+        <h3>Câmeras Analógicas (BNC)</h3>
         <div class="product-grid">
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>MHDZ 3104 / 1308</strong><span>Séries 3000 e 1000 Inteligentes</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>MHDZ 3116 -C</strong><span>16 Canais Full HD Compacto</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>INVD 3032</strong><span>NVR para 32 Câmeras IP</span></a>
+            <div class="quote-link"><strong>VHL 1120 D</strong><span>DOME HD</span></div>
+            <div class="quote-link"><strong>VHL 1220 D/B</strong><span>DOME/BULLET FULL HD</span></div>
+            <div class="quote-link"><strong>VHD 1540 B</strong><span>BULLET 5MP IR 30M</span></div>
+            <div class="quote-link"><strong>VHD 3240 B</strong><span>BULLET ALTA DEF.</span></div>
+            <div class="quote-link"><strong>VHD 5240 DUAL</strong><span>COLOR + IA</span></div>
+            <div class="quote-link"><strong>VHD 3240 DUAL</strong><span>AUDIO FULL COLOR</span></div>
         </div>
 
-        <h3><i class="fas fa-network-wired"></i> Switches e Infraestrutura</h3>
+        <h3>Gravadores (MHDZ / INVD)</h3>
         <div class="product-grid">
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>S2328 G A / GPA</strong><span>Switch Gerenciável 24 Portas</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>S1120 PA</strong><span>Switch PoE 20 Portas</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>S1126</strong><span>Switch Fast Ethernet 24 Portas</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>S1105GP</strong><span>Switch PoE Compacto 5 Portas</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>VBOX 1100E</strong><span>Caixa de Passagem Profissional</span></a>
+            <div class="quote-link"><strong>MHDZ 3104</strong><span>DIGITAL VIDEO</span></div>
+            <div class="quote-link"><strong>MHDZ 1308</strong><span>8 CANAIS</span></div>
+            <div class="quote-link"><strong>MHDZ 3116 -C</strong><span>16 CANAIS FULL HD</span></div>
+            <div class="quote-link"><strong>MHDX 1316</strong><span>HÍBRIDO 16+8</span></div>
+            <div class="quote-link"><strong>INVD 3032</strong><span>NVR 32 CANAIS</span></div>
         </div>
 
-        <h3><i class="fas fa-plug"></i> Fontes e Energia Ininterrupta</h3>
+        <h3>Switches e Rede</h3>
         <div class="product-grid">
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>FONTE 12V 20A / 33A</strong><span>Fontes Colmeia de Alta Potência</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>EFM 1205 G2</strong><span>Fonte 12,8V 5A</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>EF120 Blindada</strong><span>Fonte Blindada 12V 100W</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>FA 1220S</strong><span>Fonte Ininterrupta para CFTV</span></a>
-            <a href="https://wa.me/556332339412" class="quote-link"><strong>EFB c/ Bateria</strong><span>Fonte Nobreak 5V</span></a>
+            <div class="quote-link"><strong>S2328 G A / GPA</strong><span>GERENCIÁVEL 24P</span></div>
+            <div class="quote-link"><strong>S1120 PA</strong><span>POE 20 PORTAS</span></div>
+            <div class="quote-link"><strong>S1105GP</strong><span>POE 5 PORTAS</span></div>
+            <div class="quote-link"><strong>S1126 FAST</strong><span>24 PORTAS</span></div>
+            <div class="quote-link"><strong>VBOX 1100E</strong><span>CAIXA DE PASSAGEM</span></div>
+        </div>
+
+        <h3>Fontes e Energia</h3>
+        <div class="product-grid">
+            <div class="quote-link"><strong>FONTE 12V 20A / 33A</strong><span>COLMEIA</span></div>
+            <div class="quote-link"><strong>EFM 1205 G2</strong><span>12,8V 5A</span></div>
+            <div class="quote-link"><strong>EF120 BLINDADA</strong><span>12V 100W</span></div>
+            <div class="quote-link"><strong>FA 1220S</strong><span>ININTERRUPTA</span></div>
+            <div class="quote-link"><strong>EFB C/ BATERIA</strong><span>NOBREAK 5V</span></div>
         </div>
     </section>
 
     <div class="footer-expert">
-        <h2>Michael Oliveira</h2>
-        <p>Consultoria em Engenharia de Segurança</p>
-        <span style="font-size: 1.5em; color: var(--whatsapp); font-weight: bold;">(63) 3233-9412</span>
+        <span class="footer-name">MICHAEL OLIVEIRA</span>
+        <p style="margin-bottom: 5px; opacity: 0.8;">Engenharia de Segurança</p>
+        <span class="footer-phone">(63) 3233-9412</span>
     </div>
 
 </div>
 
-<a href="#orcamento" class="float-btn catalog-float">
-    <i class="fas fa-edit"></i>
-    <span>MONTAR PEDIDO</span>
-</a>
-
-<a href="https://wa.me/556332339412" class="float-btn whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
+<div class="float-btn-container">
+    <a href="#orcamento" class="f-btn f-left">
+        <i class="fas fa-edit" style="margin-right: 8px;"></i> MONTAR PEDIDO
+    </a>
+    <a href="https://wa.me/556332339412" class="f-btn f-right" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+</div>
 
 <script>
 function sendToWhatsapp() {
     const gravador = document.getElementById('gravador').value;
-    const camera = document.getElementById('camera_escolha').value;
-    const infra = document.getElementById('infra').value;
-    const obs = document.getElementById('obs').value;
-
-    const texto = `Olá Michael, montei meu projeto através do seu catálogo pessoal:%0A%0A` +
-                  `*Gravador:* ${gravador}%0A` + 
-                  `*Câmeras:* ${camera}%0A` +
-                  `*Energia/Infra:* ${infra}%0A` +
-                  `*Observações:* ${obs}`;
-
+    const lista = document.getElementById('produtos_lista').value;
+    const texto = `Olá Michael, montei meu projeto:%0A%0A*Gravador:* ${gravador}%0A*Itens:* ${lista}`;
     window.open(`https://wa.me/556332339412?text=${texto}`, '_blank');
 }
 </script>
